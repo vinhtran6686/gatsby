@@ -1,0 +1,34 @@
+# Exclude node_modules directory in the entire project
+/gatsby/node_modules
+/sanity/node_modules
+
+# Exclude build or dist directories if automatically generated
+/gatsby/public/
+/sanity/public/
+
+# Exclude temporary files
+*.tmp
+*.bak
+*.swp
+
+# Exclude local environment configuration files
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+
+# Exclude private keys and sensitive information
+private-key.json
+secret/
+
+# Exclude IDE or compiler-generated folders
+.idea/
+.vscode/
+__pycache/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
