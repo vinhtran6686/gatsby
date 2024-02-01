@@ -27,6 +27,7 @@ secret/
 # Exclude IDE or compiler-generated folders
 .idea/
 .vscode/
+.cache/
 __pycache/
 
 npm-debug.log*

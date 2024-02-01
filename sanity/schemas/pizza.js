@@ -7,11 +7,6 @@ export default {
   title: 'Pizzas',
   type: 'document',
   icon,
-  // fields: [
-  //   { name: 'street', type: 'string', title: 'Street name' },
-  //   { name: 'streetNo', type: 'string', title: 'Street number' },
-  //   { name: 'city', type: 'string', title: 'City' },
-  // ],
   fields: [
     {
       name: 'name',
@@ -41,23 +36,14 @@ export default {
       title: 'Price',
       type: 'number',
       description: 'Price of the pizza in cents',
-      validation: (Rule) => Rule.min(1000),
+      validation: Rule => Rule.min(1000),
     },
     {
       name: 'toppings',
       title: 'Toppings',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'string' }] }],
+      of: [{ type: 'reference', to: [{ type: 'topping' }] }],
       // TODO: Add custom input component
     },
   ],
-  // preview: {
-  //   prepare() {
-  //     return {
-  //       title: `Custom pizza`,
-  //       subtitle: `Custom pizza form`,
-  //       media: icon,
-  //     };
-  //   },
-  // },
 };
