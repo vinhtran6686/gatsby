@@ -1,0 +1,23 @@
+{
+  "extends": ["plugin:prettier/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "endOfLine": "auto"
+    }],
+    "react/jsx-wrap-multilines": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "arrowParens": "always"
+      }
+    ]
+  }
+}
