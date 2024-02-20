@@ -47,7 +47,7 @@ function countPizzasInToppings(pizzas) {
         };
       }
       return acc;
-    }, {});
+    }, {}); 
   // sort them based on their count
   const sortedToppings = Object.values(counts).sort(
     (a, b) => b.count - a.count
