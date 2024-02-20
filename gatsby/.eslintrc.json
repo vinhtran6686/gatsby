@@ -1,0 +1,55 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "quotes": "off",
+    "semi": ["error", "always"],
+    "indent": ["error", 2],
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "eqeqeq": "error",
+    "strict": "error",
+    "curly": "error",
+    "camelcase": "error",
+    "no-undef": "error",
+    "no-array-constructor": "error",
+    "no-caller": "error",
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-irregular-whitespace": "error",
+    "no-new-object": "error",
+    "no-extra-bind": "error",
+    "no-throw-literal": "error",
+    "no-unreachable": "error",
+    "no-with": "error",
+    "no-fallthrough": "error",
+    "default-case": "error",
+    "no-floating-decimal": "error",
+    "radix": "error",
+    "wrap-iife": ["error", "any"],
+    "yoda": "error",
+    "prefer-const": "error",
+    "no-debugger": "error",
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true
+      }
+    ],
+    "react/prop-types": "off"
+  },
+  "extends": ["plugin:react/recommended", "plugin:prettier/recommended"]
+}
