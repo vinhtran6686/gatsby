@@ -1,7 +1,11 @@
 import React from 'react';
-import Nav from '../components/Nav';
-import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
-const OrdersPage = () => <>OrdersPage</>;
+const OrdersPage = () => (
+  <div>
+    <SEO title="Orders" />
+    <p>Hey! I'm the Orders page</p>
+  </div>
+);
 
 export default OrdersPage;
