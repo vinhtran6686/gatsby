@@ -31,6 +31,8 @@ async function turnPizzasIntoPages({ graphql, actions }) {
   });
 }
 
+
+
 async function turnToppingsIntoPages({ graphql, actions }) {
   // 1. Get the template
   const toppingTemplate = path.resolve('./src/pages/pizzas.js');
