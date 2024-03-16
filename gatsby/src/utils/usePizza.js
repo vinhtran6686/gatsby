@@ -52,6 +52,7 @@ export default function usePizza({  pizzas, inputs }) {
          total: formatMoney(calculateOrderTotal(order, pizzas)),
          name: inputs.name,
          email: inputs.email,
+         mapleSyrup: inputs.mapleSyrup,
       };
       // 4. Send this data the a serevrless function when they check out
       const res = await fetch(`${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`, {

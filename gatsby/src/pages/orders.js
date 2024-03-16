@@ -10,7 +10,6 @@ import MenuItemStyles from '../styles/MenuItemStyles';
 import usePizza from '../utils/usePizza';
 import PizzaOrder from '../components/PizzaOrder';
 import calculateOrderTotal from '../utils/calculateOrderTotal';
-import { useOrder } from '../components/OrderContext';
 
 export default function OrderPage({ data }) {
   const pizzas = data.pizzas.nodes;
@@ -38,7 +37,7 @@ export default function OrderPage({ data }) {
   return (
     <>
       <SEO title="Order a Pizza!" />
-      <OrderStyles>
+      <OrderStyles onSubmit={submitOrder}>
         <fieldset disabled={loading}>
           <legend>Your Info</legend>
           <label htmlFor="name">Name</label>
@@ -56,6 +55,14 @@ export default function OrderPage({ data }) {
             id="email"
             value={values.email}
             onChange={updateValue}
+          />
+          <input
+            type="mapleSyrup"  // This is a honeypot field to prevent spam
+            name="mapleSyrup"
+            id="mapleSyrup"
+            value={values.mapleSyrup}
+            onChange={updateValue}
+            className="mapleSyrup"
           />
         </fieldset>
         <fieldset>
@@ -94,7 +101,7 @@ export default function OrderPage({ data }) {
             Your Total is {formatMoney(calculateOrderTotal(order, pizzas))}
           </h3>
           <div> {error ? <p>Error: {error}</p> : ''}</div>
-          <button type="submit" onClick={submitOrder}>
+          <button type="submit" disabled={loading}>
             {loading ? 'Placing Order...' : 'Order Ahead'}
           </button>
         </fieldset>
