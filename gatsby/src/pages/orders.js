@@ -30,11 +30,16 @@ export default function OrderPage({ data }) {
     pizzas,
     inputs: values,
   });
+
+  if (message) {
+    return <p>{message}</p>;
+  }
+
   return (
     <>
       <SEO title="Order a Pizza!" />
       <OrderStyles>
-        <fieldset>
+        <fieldset disabled={loading}>
           <legend>Your Info</legend>
           <label htmlFor="name">Name</label>
           <input

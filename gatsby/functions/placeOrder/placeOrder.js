@@ -51,6 +51,15 @@ exports.handler = async (event, context) => {
       invalidField = field;
       break;
     }
+    // Check if the 'order' field is an empty array
+    if (field === 'order' && body[field].length === 0) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          message: `Oops! Your order is empty. Please add some items to your order.`,
+        }),
+      };
+    }
   }
 
   if (!isValid) {
