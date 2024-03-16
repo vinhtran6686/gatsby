@@ -1,6 +1,7 @@
 # Exclude node_modules directory in the entire project
 /gatsby/node_modules
 /sanity/node_modules
+**/node_modules
 
 # Exclude build or dist directories if automatically generated
 /gatsby/public/
@@ -26,7 +27,7 @@ secret/
 
 # Exclude IDE or compiler-generated folders
 .idea/
-.vscode/ 
+.vscode/
 /gatsby/.cache
 /sanity/.cache
 __pycache/

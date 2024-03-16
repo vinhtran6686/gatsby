@@ -1,0 +1,6 @@
+# This is a Netlify configuration file (netlify.toml). It is used to specify how your site is built and deployed on Netlify,
+# including settings like the build command, publish directory, environment variables, and redirect rules.
+
+[build]
+   functions =  "functions/"
+   timeout = 26
