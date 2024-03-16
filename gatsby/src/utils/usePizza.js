@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useOrder } from "../components/OrderContext";
 
-export default function usePizza({ pizzas, inputs }) {
+export default function usePizza({  pizzas, inputs }) {
    // 1. Create some state to hold our order
    // We got rid of this line because we moved useState up to the provider
    // const [order, setOrder] = useState([]);
@@ -10,7 +11,9 @@ export default function usePizza({ pizzas, inputs }) {
    // const [loading, setLoading] = useState(false);
    // We got rid of this line because we moved useState up to the provider
    // const [message, setMessage] = useState('');
-   const [order, setOrder] = useState([]);
+   // const [order, setOrder] = useState([]);
+
+  const { order, setOrder } = useOrder();
    const [error, setError] = useState();
    const [loading, setLoading] = useState(false);
    const [message, setMessage] = useState('');
@@ -34,7 +37,7 @@ export default function usePizza({ pizzas, inputs }) {
    // 4. Send this data to a serverless function when they check out
    // 5. Set up loading, error, and success states
    return {
-      order,
+      // order,
       addToOrder,
       removeFromOrder,
       error,

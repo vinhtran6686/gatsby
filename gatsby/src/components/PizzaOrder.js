@@ -3,8 +3,10 @@ import Img from 'gatsby-image';
 import MenuItemStyles from '../styles/MenuItemStyles';
 import calculatePizzaPrice from '../utils/calculatePizzaPrice';
 import formatMoney from '../utils/formatMoney';
+import { useOrder } from './OrderContext';
 
-export default function PizzaOrder({ order, pizzas, removeFromOrder }) {
+export default function PizzaOrder({  pizzas, removeFromOrder }) {
+  const { order } = useOrder();
   return (
     <>
       {order.map((singleOrder, index) => {

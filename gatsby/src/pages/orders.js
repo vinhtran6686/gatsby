@@ -10,14 +10,16 @@ import MenuItemStyles from '../styles/MenuItemStyles';
 import usePizza from '../utils/usePizza';
 import PizzaOrder from '../components/PizzaOrder';
 import calculateOrderTotal from '../utils/calculateOrderTotal';
+import { useOrder } from '../components/OrderContext';
 
 export default function OrderPage({ data }) {
+  const pizzas = data.pizzas.nodes;
+  const { order, setOrder } = useOrder();
   const { values, updateValue } = useForm({
     name: '',
     email: '',
   });
-  const pizzas = data.pizzas.nodes;
-  const { order, addToOrder, removeFromOrder } = usePizza({
+  const { addToOrder, removeFromOrder } = usePizza({
     pizzas,
     inputs: values,
   });
@@ -73,8 +75,7 @@ export default function OrderPage({ data }) {
         </fieldset>
         <fieldset>
           <legend>Order</legend>
-          <PizzaOrder
-            order={order}
+          <PizzaOrder 
             removeFromOrder={removeFromOrder}
             pizzas={pizzas}
           />
