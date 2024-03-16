@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useOrder } from "../components/OrderContext";
+import attachNamesAndPrices from "./attachNamesAndPrices";
+import formatMoney from "./formatMoney";
+import calculateOrderTotal from "./calculateOrderTotal";
 
 export default function usePizza({  pizzas, inputs }) {
    // 1. Create some state to hold our order
@@ -36,12 +39,45 @@ export default function usePizza({  pizzas, inputs }) {
    }
    // 4. Send this data to a serverless function when they check out
    // 5. Set up loading, error, and success states
+
+   // make submit order function
+   async function submitOrder(e) {
+      e.preventDefault();
+      setLoading(true);
+      setError(null);
+      setMessage(null);
+      // gather all the data
+      const body = {
+         order: attachNamesAndPrices(order, pizzas),
+         total: formatMoney(calculateOrderTotal(order, pizzas)),
+         name: inputs.name,
+         email: inputs.email,
+      };
+      // 4. Send this data the a serevrless function when they check out
+      const res = await fetch(`${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`, {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(body),
+      });
+      const text = JSON.parse(await res.text());
+      // check if everything worked
+      if (res.status >= 400 && res.status < 600) {
+         setLoading(false);
+         setError(text.message);
+      } else {
+         setLoading(false);
+         setMessage("Success! Come on down for your pizza");
+      }
+   }
    return {
-      // order,
+      order,
       addToOrder,
       removeFromOrder,
       error,
       loading,
       message,
+      submitOrder,
    };
 }

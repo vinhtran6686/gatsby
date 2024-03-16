@@ -14,12 +14,19 @@ import { useOrder } from '../components/OrderContext';
 
 export default function OrderPage({ data }) {
   const pizzas = data.pizzas.nodes;
-  const { order, setOrder } = useOrder();
   const { values, updateValue } = useForm({
     name: '',
     email: '',
   });
-  const { addToOrder, removeFromOrder } = usePizza({
+  const {
+    order,
+    addToOrder,
+    removeFromOrder,
+    submitOrder,
+    error,
+    loading,
+    message,
+  } = usePizza({
     pizzas,
     inputs: values,
   });
@@ -75,16 +82,16 @@ export default function OrderPage({ data }) {
         </fieldset>
         <fieldset>
           <legend>Order</legend>
-          <PizzaOrder 
-            removeFromOrder={removeFromOrder}
-            pizzas={pizzas}
-          />
+          <PizzaOrder removeFromOrder={removeFromOrder} pizzas={pizzas} />
         </fieldset>
         <fieldset>
           <h3>
             Your Total is {formatMoney(calculateOrderTotal(order, pizzas))}
           </h3>
-          <button type="submit">Order Ahead</button>
+          <div> {error ? <p>Error: {error}</p> : ''}</div>
+          <button type="submit" onClick={submitOrder}>
+            {loading ? 'Placing Order...' : 'Order Ahead'}
+          </button>
         </fieldset>
       </OrderStyles>
     </>
