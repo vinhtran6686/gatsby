@@ -1,5 +1,5 @@
 import React from 'react';
-import { ItemsGrid, ItemStyles } from '../styles/Grid';
+import { ItemsGrid, ItemStyles } from '../styles/Grids';
 
 export default function LoadingGrid({ count }) {
   return (
