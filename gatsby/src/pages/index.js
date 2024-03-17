@@ -4,7 +4,6 @@ import LoadingGrid from '../components/LoadingGrid';
 import ItemGrid from '../components/ItemGrid';
 
 function CurrentlySlicing({ slicemasters }) {
-  console.log(slicemasters);
   return (
     <div>
       <h2 className="center">
@@ -37,8 +36,6 @@ function HotSlices({ hotSlices }) {
 
 export default function HomePage() {
   const { slicemasters, hotSlices } = useLatestData();
-  console.log('🚀 ~ HomePage ~ hotSlices:', hotSlices);
-  console.log('🚀 ~ HomePage ~ slicemasters:', slicemasters);
 
   return (
     <div className="center">
